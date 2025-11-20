@@ -580,8 +580,25 @@
             .award__media-strip{
                 padding: 8px;
                 scrollbar-width: thin;    /* Scroll-Leiste auf Mobile wieder sichtbarer machen */
+                position: relative;
 
             }
+
+            /* Dauerhaft sichtbare „Fake“-Scrollbar unter den Bildern – auf allen Handys */
+            .award__media-strip::after{
+                content: "";
+                position: absolute;
+                left: 10px;
+                right: 10px;
+                bottom: 2px;
+                height: 4px;
+                border-radius: 999px;
+                background: linear-gradient(90deg, rgba(148,163,184,.7), var(--bg));
+                opacity: .9;
+                pointer-events: none;   /* damit man ganz normal scrollen kann */
+            }
+
+
 
             .award__media-strip .thumb:last-child{
                 margin-right: 0;
@@ -609,26 +626,6 @@
                 object-fit:cover;
                 display:block;
             }
-
-            /* Sichtbare Scrollbar für Handy / Mobile WebKit */
-            .award__media-strip::-webkit-scrollbar {
-                height: 6px;               /* Höhe der Leiste */
-            }
-
-            .award__media-strip::-webkit-scrollbar-track {
-                background: var(--blau);   /* Hintergrund */
-                border-radius: 10px;
-            }
-
-            .award__media-strip::-webkit-scrollbar-thumb {
-                background: #000000;   /* sichtbarer Balken */
-                border-radius: 10px;
-            }
-
-            .award__media-strip::-webkit-scrollbar-thumb:hover {
-                background: rgba(255,255,255,0.65);
-            }
-
 
         }
 
